@@ -49,27 +49,7 @@ class xml_csv(object):
         parser.feed(htmlStr)
         parser.close()
         return ''.join(result)
-    """
-    def write_xml_csv(self):
-        with open(self.work_path,'rb') as work_fs:
-            work_data=work_fs.read()
-        testsuite=self.get_values(r'<testsuite name="(.*?)">',work_data)
-        testcases=self.get_values(r'<testcase.*?</testcase>',work_data)
-        for testcase in testcases:
-            print testcase
-            list_data_line=[]
-            testcase_name=self.get_values(r'<testcase name="(.*?)">',testcase)
-            version=self.get_values(r'<version><(.*?)]></version>',testcase)
-            summary=self.get_values(r'<summary><(.*?)></summary>',testcase)
-            preconditions=self.get_values('<preconditions><(.*?)></preconditions>',testcase)
-            importance=self.get_values('<importance><(.*?)></importance>',testcase)
-            steps=self.get_values('<step>(.*?)</step>',testcase)
-            for step in steps:
-                print step
-                step_number=self.get_values('<step_number><(.*?)></step_number>',step)
-                actions=self.get_values('<actions><(.*?)></actions>',step)
-                expectedresult=self.get_values('<expectedresults><(.*?)></expectedresults>',step)
-    """
+
     def read_xml_to_csv(self,xmlfile):
         csv_file=xmlfile.split('.')[0]+'.csv'
         csvfile = open(csv_file, 'wb')
