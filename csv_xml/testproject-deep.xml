@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite id="" name="" >
+<node_order><![CDATA[]]></node_order>
+<details><![CDATA[]]></details> 
+<testsuite id="5" name="测试用例集-采购" >
+<node_order><![CDATA[1]]></node_order>
+<details><![CDATA[<p>采购相关的用例</p>
+]]></details> 
+
+<testcase internalid="6" name="不设供应商报价无法采购">
+	<node_order><![CDATA[1000]]></node_order>
+	<externalid><![CDATA[1]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>采购供应商3的商品a，验证不设置供应商报价，无法采购</p>
+]]></summary>
+	<preconditions><![CDATA[<p>确保供应商3的商品a没有设置城市级的初始报价</p>
+]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+	<estimated_exec_duration></estimated_exec_duration>
+	<status>1</status>
+	<is_open>1</is_open>
+	<active>1</active>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>新增申购单：<br />
+供应商：供应商3<br />
+仓库：主库<br />
+订单状态：正常订货<br />
+选择商品a</p>
+]]></actions>
+	<expectedresults><![CDATA[]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>确认新增加申购单</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>商品没供应商报价,不能采购,提示:有商品此供应商没有报价,不能采购,请先维护报价</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="11" name="采购参考城市供应商报价">
+	<node_order><![CDATA[1001]]></node_order>
+	<externalid><![CDATA[2]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>采购该商品a、b，验证仅有城市的此供应商的供应商报价时，采购可以取到该报价</p>
+]]></summary>
+	<preconditions><![CDATA[<p>设置如下商品的供应商报价分别是x1、y1，并审核通过</p>
+
+<p>仓库：城市</p>
+
+<p>供应商：供应商1</p>
+
+<p>商品：a、b</p>
+]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+	<estimated_exec_duration></estimated_exec_duration>
+	<status>1</status>
+	<is_open>1</is_open>
+	<active>1</active>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>新增申购单：<br />
+供应商：供应商1<br />
+仓库：主仓<br />
+订单状态：正常订货<br />
+商品：a、b<br />
+采购价：供应商报价</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>建议采购量=近15日每天销售量的平均数；<br />
+新增申购单选择商品a、b时可以看到它们的供应商报价分别为x1、y1</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>确认新增加申购单</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>新建采购单成功</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>修改申购单</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>修改申购单时看到商品a、b的供应商报价还是分别为x1、y1</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="17" name="采购参考城市限时供应商报价">
+	<node_order><![CDATA[1001]]></node_order>
+	<externalid><![CDATA[3]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>采购该商品a、b，验证有城市的此供应商的供应商报价和限时供应商报价时，采购可以取到限时供应商报价</p>
+]]></summary>
+	<preconditions><![CDATA[<p>设置如下商品的限时供应商报价分别是x2、y2，并审核通过</p>
+
+<p>仓库：城市</p>
+
+<p>供应商：供应商1</p>
+
+<p>商品：a、b</p>
+]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+	<estimated_exec_duration></estimated_exec_duration>
+	<status>1</status>
+	<is_open>1</is_open>
+	<active>1</active>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>新增申购单：<br />
+供应商：供应商1<br />
+仓库：主仓<br />
+订单状态：正常订货<br />
+商品：a、b<br />
+采购价：供应商报价</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>新增申购单选择商品a、b时可以看到它们的供应商报价分别为x2、y2</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>确认新增加申购单</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>新建采购单成功</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>修改申购单</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>修改申购单时看到商品a、b的供应商报价分别为x2、y2</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>作废申购单</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>作废申购单成功</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="114" name="仓库级的报价，只能对应仓库">
+	<node_order><![CDATA[1002]]></node_order>
+	<externalid><![CDATA[10]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>对供应商b商品a、b,设置仓库报价，采购该商品。验证采购商品时可以取到对应该的供应商报价</p>
+]]></summary>
+	<preconditions><![CDATA[<p>创建商品a、b的供应商b,前置仓1报价分别为x3、y3，并审核通过；<br />
+&nbsp;</p>
+]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[3]]></importance>
+	<estimated_exec_duration></estimated_exec_duration>
+	<status>7</status>
+	<is_open>1</is_open>
+	<active>1</active>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>新增申购单：<br />
+供应商：供应商b<br />
+仓库：前置仓2<br />
+订单状态：正常订货<br />
+选择商品a,b<br />
+采购价：供应商报价<br />
+单件返利：1</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>新增申购单，选择商品a、b时可以看到它们的供应商报价分别为x1，y1</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>新增申购单：<br />
+供应商：供应商b<br />
+仓库：前置仓1<br />
+订单状态：正常订货<br />
+选择商品a,b<br />
+采购价：供应商报价<br />
+单件返利：1</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>新增申购单页，选择商品a、b时可以看到它们的供应商报价分别为x3，y3；</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>确认新增加申购单<br />
+提交审核<br />
+审核通过<br />
+确认采购</p>
+]]></actions>
+	<expectedresults><![CDATA[]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+	<relation>
+		<source>供应商报价-2</source>
+		<destination>供应商报价-3</destination>
+		<type>2</type>
+	</relation>
+</testsuite><testsuite id="23" name="测试用例集-供应商报价管理" >
+<node_order><![CDATA[2]]></node_order>
+<details><![CDATA[]]></details> 
+
+<testcase internalid="25" name="新建商品初始基准价">
+	<node_order><![CDATA[0]]></node_order>
+	<externalid><![CDATA[4]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>对供应商1的商品，设置城市级的初始基准价，验证新建城市级供应商报价单成功</p>
+]]></summary>
+	<preconditions><![CDATA[]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+	<estimated_exec_duration></estimated_exec_duration>
+	<status>1</status>
+	<is_open>1</is_open>
+	<active>1</active>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>新增/修改报价单，设置如下：<br />
+仓库：城市<br />
+供应商：供应商1<br />
+类型：设置初始基准价<br />
+变更说明：无</p>
+]]></actions>
+	<expectedresults><![CDATA[]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>保存</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>因为没上传报价单图片,所以提示:必须上传图片</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>上传图片</p>
+]]></actions>
+	<expectedresults><![CDATA[]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>选择商品</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>选择商品时列出当前分公司的供应商1的商品，包括:启用,停用的</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>选择一个原供应商报价&lt;&gt;0的商品，设置新报价=11，并保存</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>提示:库存编号:xxxx的商品的原供应商报价&lt;&gt;0,则变更类型不能是:设置初始报价</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>选择一个原供应商报价=0的商品，设置新报价=10，并保存</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>提示：新报价必须大于0！</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[<p>设置新供应商报价=原供应商报价并保存</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>提示:库存编号:xxxx的商品的供应商报价未调整,请确认!</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[8]]></step_number>
+	<actions><![CDATA[<p>点击确认</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>生成供应商报价变更单:单号规则:BJBG201705240001</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[9]]></step_number>
+	<actions><![CDATA[<p>查看报价单列表</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>该报价单基本信息正确；</p>
+
+<p>对该报价单可以有三种操作：修改、提交审核、作废</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="35" name="修改商品初始基准价1">
+	<node_order><![CDATA[1]]></node_order>
+	<externalid><![CDATA[5]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>验证修改城市级供应商报价单成功</p>
+]]></summary>
+	<preconditions><![CDATA[]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+	<estimated_exec_duration></estimated_exec_duration>
+	<status>1</status>
+	<is_open>1</is_open>
+	<active>1</active>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>新增/修改报价单，可以修改设置如下：<br />
+供应商：供应商2<br />
+类型：供应商报价<br />
+变更说明：xxxx</p>
+]]></actions>
+	<expectedresults><![CDATA[]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>设置新供应商报价=0，并保存</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>提示:新报价必须大于零!</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>设置新供应商报价=10，并保存</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>保存成功</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>再次修改申购单，选择商品</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>选择商品时列出当前分公司的供应商1的商品，包括:启用,停用的</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>选择1个原供应商报价不为0的商品，设置新报价为10，并保存</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>提示：原报价不为0，类型错误</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>重新选择1个原供应商报价为0的商品，设置新报价为0，并保存</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>保存成功</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="75" name="修改商品初始基准价2">
+	<node_order><![CDATA[2]]></node_order>
+	<externalid><![CDATA[7]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>验证修改城市级供应商报价单成功</p>
+]]></summary>
+	<preconditions><![CDATA[]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+	<estimated_exec_duration></estimated_exec_duration>
+	<status>1</status>
+	<is_open>1</is_open>
+	<active>1</active>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>再次修改该申购单，修改设置如下：<br />
+供应商：供应商3<br />
+类型：供应商涨价<br />
+变更说明：xxxx</p>
+]]></actions>
+	<expectedresults><![CDATA[]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>设置申购单内商品的新报价=10，并保存</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>提示：原报价不为0，类型错误</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>删除申购单内商品</p>
+]]></actions>
+	<expectedresults><![CDATA[]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>再次选择商品</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>选择商品时列出当前分公司的供应商1的商品，包括:启用,停用的</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>选择1个原供应商报价为0的商品，设置新报价为0或者10并保存</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>保存不成功</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>选择1个原供应商报价不为0的商品，设置新报价=原报价，并保存</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>提示：原报价必须大于新报价，类型错误</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[<p>设置新报价&gt;原报价，并保存</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>保存成功</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="91" name="修改商品初始基准价3">
+	<node_order><![CDATA[3]]></node_order>
+	<externalid><![CDATA[8]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>验证修改城市级供应商报价单成功</p>
+]]></summary>
+	<preconditions><![CDATA[]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+	<estimated_exec_duration></estimated_exec_duration>
+	<status>1</status>
+	<is_open>1</is_open>
+	<active>1</active>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>再次修改该申购单，修改设置如下：<br />
+供应商：供应商3<br />
+类型：供应商降价<br />
+变更说明：xxxx</p>
+]]></actions>
+	<expectedresults><![CDATA[]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[2]]></step_number>
+	<actions><![CDATA[<p>设置申购单内商品的新报价=10，并保存</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>提示：原报价不为0，类型错误</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>删除申购单内商品</p>
+]]></actions>
+	<expectedresults><![CDATA[]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>再次选择商品</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>选择商品时列出当前分公司的供应商1的商品，包括:启用,停用的</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>选择1个原供应商报价为0的商品，设置新报价为0或者10并保存</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>保存不成功</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[6]]></step_number>
+	<actions><![CDATA[<p>选择1个原供应商报价不为0的商品，设置新报价=原报价，并保存</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>提示：原报价必须小于新报价，类型错误</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[7]]></step_number>
+	<actions><![CDATA[<p>设置新报价&lt;原报价，并保存</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>保存成功</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+
+<testcase internalid="101" name="商品初始基准价提交审核">
+	<node_order><![CDATA[4]]></node_order>
+	<externalid><![CDATA[9]]></externalid>
+	<version><![CDATA[1]]></version>
+	<summary><![CDATA[<p>验证审核商品初始基准价</p>
+]]></summary>
+	<preconditions><![CDATA[<p>新建一个商品初始基准价</p>
+]]></preconditions>
+	<execution_type><![CDATA[1]]></execution_type>
+	<importance><![CDATA[2]]></importance>
+	<estimated_exec_duration></estimated_exec_duration>
+	<status>1</status>
+	<is_open>1</is_open>
+	<active>1</active>
+<steps>
+<step>
+	<step_number><![CDATA[1]]></step_number>
+	<actions><![CDATA[<p>在报价单列表中，点击一个初始基准价类型的报价单的&ldquo;提交审核&rdquo;</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>提交成功；</p>
+
+<p>该报价单的可操作功能为&ldquo;取消提交审核&rdquo;；</p>
+
+<p>状态=提交审核,记录创建人,创建时间,提交审核人,提交审核时间；</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[3]]></step_number>
+	<actions><![CDATA[<p>打开报价单审核列表，进行&ldquo;审核&rdquo;操作，并选择&ldquo;不通过&rdquo;</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>报价单展示在报价审核列表页面；</p>
+
+<p>弹出不通过原因的输入框</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[4]]></step_number>
+	<actions><![CDATA[<p>输入审核不通过原因</p>
+]]></actions>
+	<expectedresults><![CDATA[]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+
+<step>
+	<step_number><![CDATA[5]]></step_number>
+	<actions><![CDATA[<p>打开报价单审核列表，进行&ldquo;审核&rdquo;操作，并选择&ldquo;通过&rdquo;</p>
+]]></actions>
+	<expectedresults><![CDATA[<p>报价单展示在该页面；</p>
+
+<p>将状态由提交审核改为审核通过,记录审核人,审核时间；</p>
+
+<p>返回到:总部供应商报价变更单审核管理界面</p>
+]]></expectedresults>
+	<execution_type><![CDATA[1]]></execution_type>
+</step>
+</steps>
+</testcase>
+	<relation>
+		<source>供应商报价-4</source>
+		<destination>供应商报价-5</destination>
+		<type>2</type>
+	</relation>
+</testsuite><testsuite id="24" name="测试用例集-供应商限时报价管理" >
+<node_order><![CDATA[3]]></node_order>
+<details><![CDATA[]]></details> 
+</testsuite></testsuite>
